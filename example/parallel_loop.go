@@ -29,6 +29,7 @@ func nonsense(ctx context.Context) {
 
 func main() {
 	para := &batch.Parallel{
+		Parallels: 5,
 		Worker: func(ctx context.Context) {
 			name := getRandomName()
 			ctx = nameContext(ctx, name)
