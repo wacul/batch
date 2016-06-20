@@ -12,22 +12,24 @@ import (
 	"golang.org/x/net/context"
 )
 
-func nonsense(ctx context.Context) {
-	name := nameFromContext(ctx)
-	counter := counterFromContext(ctx)
-	interval := intervalFromContext(ctx)
-	*counter++
-	fmt.Printf("I'm %s @%d (%s)\n", name, *counter, interval.String())
-
-	select {
-	case <-time.After(interval):
-		return
-	case <-ctx.Done():
-		return
-	}
-}
-
 func main() {
+	loop := &batch.Loop{
+		Worker: func(ctx context.Context) {
+			name := nameFromContext(ctx)
+			counter := counterFromContext(ctx)
+			interval := intervalFromContext(ctx)
+			*counter++
+			fmt.Printf("I'm %s @%d (%s)\n", name, *counter, interval.String())
+
+			select {
+			case <-time.After(interval):
+				return
+			case <-ctx.Done():
+				return
+			}
+		},
+	}
+
 	para := &batch.Parallel{
 		Parallels: 5,
 		Worker: func(ctx context.Context) {
@@ -38,12 +40,10 @@ func main() {
 			interval := getRandomInterval()
 			ctx = intervalContext(ctx, interval)
 
-			loop := &batch.Loop{
-				Worker: nonsense,
-			}
 			loop.Run(ctx)
 		},
 	}
+
 	para.Run(nil)
 }
 
