@@ -19,9 +19,8 @@ type Cron struct {
 
 // Run the Worker on the schedule
 func (c *Cron) Run(ctx context.Context) {
-	if ctx == nil {
-		ctx = context.Background()
-	}
+	ctx = c.context(ctx)
+
 	immediate := make(chan struct{}, 1)
 	if c.Immediate {
 		immediate <- struct{}{}
@@ -44,9 +43,9 @@ func (c *Cron) Run(ctx context.Context) {
 		case <-ctx.Done():
 			return
 		case <-time.After(wait):
-			c.Sig.run(ctx, c.Worker)
+			c.Worker(ctx)
 		case <-immediate:
-			c.Sig.run(ctx, c.Worker)
+			c.Worker(ctx)
 		}
 		if c.Once {
 			break

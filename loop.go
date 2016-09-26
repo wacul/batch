@@ -10,8 +10,9 @@ type Loop struct {
 
 // Run loops the worker
 func (l *Loop) Run(ctx context.Context) {
+	ctx = l.context(ctx)
 	for {
-		l.Sig.run(ctx, l.Worker)
+		l.Worker(ctx)
 
 		select {
 		case <-ctx.Done():
