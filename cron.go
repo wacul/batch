@@ -19,7 +19,10 @@ type Cron struct {
 
 // Run the Worker on the schedule
 func (c *Cron) Run(ctx context.Context) {
-	immediate := make(chan struct{})
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	immediate := make(chan struct{}, 1)
 	if c.Immediate {
 		immediate <- struct{}{}
 	}
