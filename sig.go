@@ -1,11 +1,10 @@
 package batch
 
 import (
+	"context"
 	"os"
 	"os/signal"
 	"syscall"
-
-	"golang.org/x/net/context"
 )
 
 // Sig the Workers in parallel with the interval.

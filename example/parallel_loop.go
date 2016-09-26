@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"math/rand"
@@ -9,7 +10,6 @@ import (
 
 	"github.com/wacul/batch"
 	"github.com/wacul/ptr"
-	"golang.org/x/net/context"
 )
 
 func main() {

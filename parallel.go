@@ -1,9 +1,8 @@
 package batch
 
 import (
+	"context"
 	"sync"
-
-	"golang.org/x/net/context"
 )
 
 // Parallel processes the Worker in parallel.

@@ -1,10 +1,10 @@
 package batch
 
 import (
+	"context"
 	"time"
 
 	"github.com/gorhill/cronexpr"
-	"golang.org/x/net/context"
 )
 
 // Cron will process the Worker on the schedule

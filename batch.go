@@ -1,6 +1,6 @@
 package batch
 
-import "golang.org/x/net/context"
+import "context"
 
 // Batch is the interface to process in context.
 type Batch interface {

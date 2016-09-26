@@ -1,6 +1,6 @@
 package batch
 
-import "golang.org/x/net/context"
+import "context"
 
 // Loop the Worker with the interval.
 type Loop struct {
