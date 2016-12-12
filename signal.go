@@ -1,6 +1,6 @@
 package batch
 
-import "golang.org/x/net/context"
+import "context"
 
 // Signal the Worker with the cancelation
 type Signal struct {
