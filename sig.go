@@ -15,7 +15,7 @@ type Sig struct {
 // Run a batch worker.
 // Receiving a SIGTERM, it waits for all of the Worker finished and stop.
 // The context canceled, Workers should finish safely and quickly.
-func (l *Sig) context(ctx context.Context) context.Context {
+func (l *Sig) context(ctx context.Context) (context.Context, context.CancelFunc) {
 	if ctx == nil {
 		ctx = context.Background()
 	}
@@ -36,5 +36,5 @@ func (l *Sig) context(ctx context.Context) context.Context {
 			}
 		}()
 	}
-	return ctx
+	return ctx, cancel
 }

@@ -10,7 +10,8 @@ type Loop struct {
 
 // Run loops the worker
 func (l *Loop) Run(ctx context.Context) {
-	ctx = l.context(ctx)
+	ctx, cancel := l.context(ctx)
+	defer cancel()
 	for {
 		l.Worker(ctx)
 

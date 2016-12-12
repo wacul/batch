@@ -14,7 +14,8 @@ type Parallel struct {
 
 // Run proccesses the worker in parallel.
 func (p *Parallel) Run(ctx context.Context) {
-	ctx = p.context(ctx)
+	ctx, cancel := p.context(ctx)
+	defer cancel()
 	n := p.Parallels
 	if n < 1 {
 		n = 1

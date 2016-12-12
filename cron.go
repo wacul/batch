@@ -19,7 +19,8 @@ type Cron struct {
 
 // Run the Worker on the schedule
 func (c *Cron) Run(ctx context.Context) {
-	ctx = c.context(ctx)
+	ctx, cancel := c.context(ctx)
+	defer cancel()
 
 	immediate := make(chan struct{}, 1)
 	if c.Immediate {
