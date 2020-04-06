@@ -1,0 +1,4 @@
+github.com/gorhill/cronexpr v0.0.0-20180427100037-88b0669f7d75 h1:f0n1xnMSmBLzVfsMMvriDyA75NB/oBgILX2GcHXIQzY=
+github.com/gorhill/cronexpr v0.0.0-20180427100037-88b0669f7d75/go.mod h1:g2644b03hfBX9Ov0ZBDgXXens4rxSxmqFBbhvKv2yVA=
+github.com/wacul/ptr v1.0.0 h1:FIKu08Wx0YUIf9MNsfF62OCmBSmz5A1Tk65zWhOIL/I=
+github.com/wacul/ptr v1.0.0/go.mod h1:BD0gjsZrCwtoR+yWDB9v2hQ8STlq9tT84qKfa+3txOc=
